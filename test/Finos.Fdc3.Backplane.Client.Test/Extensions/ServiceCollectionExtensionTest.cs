@@ -34,13 +34,13 @@ namespace Finos.Fdc3.Backplane.Client.Test.Extensions
             InitializeParams initializeParam = new InitializeParams(new AppIdentifier() { AppId = "Test" });
             _fixture.Register(() => initializeParam);
             serviceCollection.ConfigureBackplaneClient(initializeParam, () => new Uri("http://test"));
-            Assert.IsTrue(serviceCollection.Count() > 5);
+            Assert.That(serviceCollection.Count(), Is.GreaterThan(5));
             Assembly assembly = Assembly.Load("Finos.Fdc3.Backplane.Client");
             IEnumerable<Type> interfaces = assembly.GetTypes().Where(x => x.IsInterface);
             ServiceProvider container = serviceCollection.BuildServiceProvider();
-            Assert.IsTrue(interfaces.Except(new[] { typeof(IBackplaneTransport) }).All(p => container.GetRequiredService(p) != null));
+            Assert.That(interfaces.Except(new[] { typeof(IBackplaneTransport) }).All(p => container.GetRequiredService(p) != null), Is.True);
             Lazy<IBackplaneTransport> transport = container.GetService<Lazy<IBackplaneTransport>>();
-            Assert.IsNotNull(transport);
+            Assert.That(transport, Is.Not.Null);
 
 
 

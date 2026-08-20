@@ -34,7 +34,7 @@ namespace Finos.Fdc3.Backplane.Tests.Controllers
             //Act
             ObjectResult result = sut.BroadcastToLocalClients(null).Result as ObjectResult;
             //Assert
-            Assert.AreEqual(result.StatusCode, 400);
+            Assert.That(result.StatusCode, Is.EqualTo(400));
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace Finos.Fdc3.Backplane.Tests.Controllers
             //Act
             ObjectResult result = sut.BroadcastToLocalClients(broadcastContext).Result as ObjectResult;
             //Assert
-            Assert.AreEqual(result.StatusCode, 200);
+            Assert.That(result.StatusCode, Is.EqualTo(200));
         }
 
         [Test]
@@ -64,8 +64,8 @@ namespace Finos.Fdc3.Backplane.Tests.Controllers
             //Act
             ObjectResult result = sut.BroadcastToLocalClients(broadcastContext).Result as ObjectResult;
             //Assert
-            Assert.AreEqual(result.StatusCode, 500);
-            Assert.AreEqual((result.Value as Exception).Message, "Exception Occured");
+            Assert.That(result.StatusCode, Is.EqualTo(500));
+            Assert.That((result.Value as Exception).Message, Is.EqualTo("Exception Occured"));
             Assert.Throws<Exception>(() => hub.BroadcastToLocalClients(broadcastContext));
 
         }

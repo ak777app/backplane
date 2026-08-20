@@ -30,8 +30,8 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
             //Act
             sut.AddNode(url);
             //Assert
-            Assert.AreEqual(1, sut.MemberNodes.Count());
-            Assert.AreEqual(url, sut.MemberNodes.ToList().First());
+            Assert.That(sut.MemberNodes.Count(), Is.EqualTo(1));
+            Assert.That(sut.MemberNodes.ToList().First(), Is.EqualTo(url));
         }
 
         [Test]
@@ -43,8 +43,8 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
             sut.AddNode(url);
             sut.AddNode(url);
             //Assert
-            Assert.AreEqual(1, sut.MemberNodes.Count());
-            Assert.AreEqual(url, sut.MemberNodes.ToList().First());
+            Assert.That(sut.MemberNodes.Count(), Is.EqualTo(1));
+            Assert.That(sut.MemberNodes.ToList().First(), Is.EqualTo(url));
         }
 
         [Test]
@@ -56,10 +56,10 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
             //Act
             sut.AddNode(url);
             //Assert
-            Assert.AreEqual(1, sut.MemberNodes.Count());
-            Assert.AreEqual(url, sut.MemberNodes.ToList().First());
+            Assert.That(sut.MemberNodes.Count(), Is.EqualTo(1));
+            Assert.That(sut.MemberNodes.ToList().First(), Is.EqualTo(url));
             sut.RemoveNode(url);
-            Assert.AreEqual(0, sut.MemberNodes.Count());
+            Assert.That(sut.MemberNodes.Count(), Is.EqualTo(0));
         }
 
         [Test]
@@ -71,12 +71,12 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
             //Act
             sut.AddNode(url);
             //Assert
-            Assert.AreEqual(1, sut.MemberNodes.Count());
-            Assert.AreEqual(url, sut.MemberNodes.ToList().First());
+            Assert.That(sut.MemberNodes.Count(), Is.EqualTo(1));
+            Assert.That(sut.MemberNodes.ToList().First(), Is.EqualTo(url));
             sut.RemoveNode(url);
             sut.RemoveNode(url);
             sut.RemoveNode(url);
-            Assert.AreEqual(0, sut.MemberNodes.Count());
+            Assert.That(sut.MemberNodes.Count(), Is.EqualTo(0));
 
         }
 
@@ -92,7 +92,7 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
             sut.AddNode(url1);
             System.Collections.Generic.IEnumerable<Uri> ref1 = sut.MemberNodes;
             System.Collections.Generic.IEnumerable<Uri> ref2 = sut.MemberNodes;
-            Assert.IsFalse(ReferenceEquals(ref2, ref1));
+            Assert.That(ReferenceEquals(ref2, ref1), Is.False);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Finos.Fdc3.Backplane.Client.Test.API
             BackplaneClient sut = _fixture.Create<BackplaneClient>();
             await sut.ConnectAsync(default, default, default);
             System.Collections.Generic.IEnumerable<Channel> channels = await sut.GetUserChannelsAsync();
-            Assert.AreEqual(channels.Count(), 1);
+            Assert.That(channels.Count(), Is.EqualTo(1));
         }
 
         [Test]
