@@ -30,7 +30,7 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
             NodeRegistrationClient sut = _fixture.Create<NodeRegistrationClient>();
             Uri uri = new Uri("http://abc.com/");
             await sut.RegisterAsync(uri);
-            Assert.IsTrue(sut.CurrentNodeUri == uri);
+            Assert.That(sut.CurrentNodeUri, Is.EqualTo(uri));
         }
 
 

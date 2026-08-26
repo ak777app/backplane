@@ -24,7 +24,7 @@ namespace Finos.Fdc3.Backplane.Client.Test.Extensions
         {
             ILogger logger = _fixture.Freeze<ILogger>();
             ILoggerProvider logProvider = logger.AsLoggerProvider();
-            Assert.AreSame(logger, logProvider.CreateLogger(default));
+            Assert.That(logProvider.CreateLogger(default), Is.SameAs(logger));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Finos.Fdc3.Backplane.Tests.Multihost
         {
             NodesDiscoveryClient sut = _fixture.Create<NodesDiscoveryClient>();
             IEnumerable<Uri> result = await sut.DiscoverAsync();
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
         }
     }
 }
